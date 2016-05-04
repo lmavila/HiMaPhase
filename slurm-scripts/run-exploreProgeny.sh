@@ -1,8 +1,8 @@
 #!/bin/bash -l
-#SBATCH -D /home/lavila/projects/test_project
+#SBATCH -D /home/lavila/projects/HiMaPhase
 #SBATCH -J exploreProgeny
-#SBATCH -o /home/lavila/projects/test_project/slurm-log/exploreProgeny-stdout-%j.txt
-#SBATCH -e /home/lavila/projects/test_project/slurm-log/exploreProgeny-stderr-%j.txt
+#SBATCH -o /home/lavila/projects/HiMaPhase/slurm-log/exploreProgeny-stdout-%j.txt
+#SBATCH -e /home/lavila/projects/HiMaPhase/slurm-log/exploreProgeny-stderr-%j.txt
 
 
 R --no-save < profiling/exploreProgeny.R
