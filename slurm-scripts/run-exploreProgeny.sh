@@ -6,4 +6,4 @@
 
 
 R --no-save < profiling/exploreProgeny.R
-#sbatch -p bigmemh --mem 160000 --ntasks=20 slurm-scripts/run-exploreProgeny.sh
+#sbatch -p bigmemh --mem 160000 --ntasks=20 --time 20 slurm-scripts/run-exploreProgeny.sh

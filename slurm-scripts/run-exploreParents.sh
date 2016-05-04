@@ -6,4 +6,4 @@
 
 
 R --no-save < profiling/exploratory.R
-#sbatch -p bigmemh --mem 160000 --ntasks=20 slurm-scripts/run-exploreParents.sh
+#sbatch -p bigmemh --mem 160000 --ntasks=20 --time 20 slurm-scripts/run-exploreParents.sh
