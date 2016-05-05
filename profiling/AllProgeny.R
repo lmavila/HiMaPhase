@@ -14,7 +14,7 @@ dim(parents)
 
 #loading the progeny file
 date()
-progeny<-read.table('/group/jrigrp4/phasing/cj_teo_updated/teo_imputeR_03162016.txt',fill = TRUE , header = TRUE);
+progeny<-read.table('/group/jrigrp4/phasing/cj_teo_updated/teo_imputeR_03162016.txt',sep="\t", header = TRUE);
 date()
 dim(progeny)
 
@@ -24,7 +24,7 @@ cat("num_taxa\ttaxa\tmom\tdad\tnum_rec_events\n",file="hmm-summary.txt")
 
 
 ### START OF MAIN LOOP
-for (progeny.index in 1:100){
+for (progeny.index in 1:dim(parentage)[1]){
   progeny.individual.name<- parentage[progeny.index,1]
   #progeny.individual.name
   maternal.parent.name<-parentage[progeny.index,2]
@@ -43,7 +43,7 @@ for (progeny.index in 1:100){
 
 
   obs<-progeny[,as.character(progeny.individual.name)]
-  #obs[1:10]
+  cat("observed for",as.character(progeny.individual.name)," :",obs[1:10],"\n")
   #length(mom.chromatid$maternal)
   #length(obs)
   vit<-ViterbiWithMissingData(obs,start.p, trans.p,mom.chromatid,dad.chromatid,0.4)
