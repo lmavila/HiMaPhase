@@ -1,5 +1,7 @@
 MaPhase
 A hidden markov progeny phaser
+*This is a repository of my personal codde and is not ready for distribuition*
+*It lacks documentation and has fixed paths to my own data files.*
 
 A Hidden Markov Model (HMM) implementation to phase a progeny from
 a biparental cross.
@@ -21,4 +23,4 @@ It identifies parental segments and recombination breaks
 A tutorial on the development of the model is:
 https://github.com/lmavila/HMMTutorial.git
 
-
+The SharedFunctions.R file can be found on that project as well.
