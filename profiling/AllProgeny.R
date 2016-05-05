@@ -58,7 +58,7 @@ for (progeny.index in 1:100){
 
   cat("Numb.recomb.events: ",CountRecombEvents(estimated),"\n")
   eventIndex<-ListRecombEvents(estimated)
-  cat(eventIndex)
+  #cat(eventIndex)
   ## listing indexes of recombination events
   #eventIndex[1:max(20,length(eventIndex))]
   min.index<-1
@@ -75,7 +75,7 @@ for (progeny.index in 1:100){
     cat("dad.hap.1 ",dad.chromatid$maternal[min.index:max.index],"\n")
     cat("dad.hap.2 ",dad.chromatid$paternal[min.index:max.index],"\n")
     cat("child.gen ",obs[min.index:max.index],"\n")
-    cat("child.pashing ",estimated[min.index:max.index],"\n");
+    cat("child.phasing ",estimated[min.index:max.index],"\n");
     cat("\n")
  
   }
