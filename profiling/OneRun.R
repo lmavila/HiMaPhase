@@ -30,7 +30,7 @@ dim(progeny)
 
 mom.chromatid<-list(maternal=parents[,paste(maternal.parent.name,"_hap1",sep="")],paternal=parents[,paste(maternal.parent.name,"_hap2",sep="")])
 
-mom.chromatid
+#mom.chromatid
 
 mom.chromatid$maternal[870:900]
 mom.chromatid$paternal[870:900]
@@ -54,6 +54,7 @@ trans.p<-GetTransitionProb(0.001)
 dad.chromatid<-mom.chromatid #because it is a self cross
 #obs<-as.vector(t(progeny[progeny$child=='A2410',4:dim(progeny)[2]]))
 obs<-progeny[,progeny.individual.name]
+obs[1:10]
 vit<-ViterbiWithMissingData(obs,start.p, trans.p,mom.chromatid,dad.chromatid,0.4)
 vitrowmax.2 <- apply(vit, 1, function(x) which.max(x))
 estimated<-rownames(trans.p)[vitrowmax.2]
