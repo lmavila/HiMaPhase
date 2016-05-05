@@ -1,4 +1,4 @@
-MaPhase
+#HiMaPhase#
 A hidden markov progeny phaser
 
 **This is a repository of my personal codde and is not ready for distribuition**
