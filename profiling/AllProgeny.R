@@ -43,7 +43,7 @@ for (progeny.index in 1:dim(parentage)[1]){
 
 
   obs<-progeny[,as.character(progeny.individual.name)]
-  cat("observed for",as.character(progeny.individual.name)," :",obs[1:10],"\n")
+ # cat("observed for",as.character(progeny.individual.name)," :",obs[1:10],"\n")
   #length(mom.chromatid$maternal)
   #length(obs)
   vit<-ViterbiWithMissingData(obs,start.p, trans.p,mom.chromatid,dad.chromatid,0.4)
