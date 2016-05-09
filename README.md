@@ -27,5 +27,4 @@ https://github.com/lmavila/HMMTutorial.git
 The SharedFunctions.R file can be found on that project as well.
 
 ##TODO LIST##
-- take chunks into account, if recomb at chunk changes flip haplotypes
-- burn in for a whole chunk at the start of a chromosome to find phasing and start as initial probability
+- take chunks into account, if recomb at chunk change flip haplotypes
