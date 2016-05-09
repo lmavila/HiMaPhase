@@ -24,8 +24,8 @@ cat("num_taxa\ttaxa\tmom\tdad\tnum_rec_events\n",file="hmm-summary.txt")
 
 
 ### START OF MAIN LOOP
-#for (progeny.index in 1:dim(parentage)[1]){
-for (progeny.index in 1:10){
+for (progeny.index in 1:dim(parentage)[1]){
+#for (progeny.index in 1:10){
 
   progeny.individual.name<- parentage[progeny.index,1]
   #progeny.individual.name
@@ -113,9 +113,9 @@ for (progeny.index in 1:10){
         max.index<-min(length(obs),locus.index+2)
         #cat("locus.index,min.index,max.index: ",locus.index,min.index,max.index,"\n",sep=",")
 
-        cat("Recomb event at locus:",as.character(parents[locus.index,1]),
-                                   as.character(parents[locus.index,2]),
-                               ":",as.character(parents[locus.index,3]),"\n")
+        cat("Recomb event at locus:",as.character(current.chromosome.parent.subset[locus.index,1]),
+                                   as.character(current.chromosome.parent.subset[locus.index,2]),
+                               ":",as.character(current.chromosome.parent.subset[locus.index,3]),"\n")
         cat("showing loci: ",as.character(current.chromosome.progeny.subset[min.index:max.index,1]),"\n")
         cat("mom.hap.1 ",mom.chromatid$maternal[min.index:max.index],"\n")
         cat("mom.hap.2 ",mom.chromatid$paternal[min.index:max.index],"\n")
@@ -133,9 +133,6 @@ for (progeny.index in 1:10){
         as.character(parentage[progeny.index,3]),
         total.recomb.events,
         "\n",file="hmm-summary.txt",append=TRUE,sep="\t")
-    }
-
-
   
   ### For each recombination event we will show flanking loci
   ### for the panret haps and progeny
