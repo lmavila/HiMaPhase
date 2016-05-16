@@ -16,6 +16,8 @@ progeny[1:10,"PC_I50_ID2"]
 progeny[1:10,"A0064"]
 progeny[1:10,"A2643"]
 
+
+write.table(data.frame(progeny[,1],progeny[,"A0118"]),sep="\t",file="A0118.txt")
 date()
 #levels(as.factor($chr))
 #levels(as.factor(parents[,4]))
