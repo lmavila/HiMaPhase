@@ -24,7 +24,8 @@ sum(parents[,"PC_M05_ID1_hap1"]!=parents[,"PC_M05_ID1_hap2"])
 sum(parents[,"PC_J07_ID2_hap1"]==parents[,"PC_J07_ID2_hap2"])
 sum(parents[,"PC_J07_ID2_hap1"]!=parents[,"PC_J07_ID2_hap2"])
 
-write.table(data.frame(parents[,1],parents[,2],parents[,3],parents[,"PC_M05_ID1_chunk"],parents[,"PC_M05_ID1_hap1"],parents[,"PC_M05_ID1_hap2"]),file="PC_M05_ID1_haps.txt",sep="\t")
+#write.table(data.frame(parents[,1],parents[,2],parents[,3],parents[,"PC_M05_ID1_chunk"],parents[,"PC_M05_ID1_hap1"],parents[,"PC_M05_ID1_hap2"]),file="PC_M05_ID1_haps.txt",sep="\t")
+write.table(data.frame(parents[,1],parents[,2],parents[,3],parents[,"PC_I05_ID1_chunk"],parents[,"PC_I05_ID1_hap1"],parents[,"PC_I05_ID1_hap2"]),file="PC_I05_ID1_haps.txt",sep="\t")
 
 #aggregate(data=parents,outcrosse ~has.no.event,function(x) length(unique(x)))
 
