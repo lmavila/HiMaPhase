@@ -26,7 +26,7 @@ cat("num_taxa\ttaxa\tmom\tdad\tlocus\tchromosome\tphysical_position\n",file="raw
 
 ### START OF MAIN LOOP
 #for (progeny.index in 1:dim(parentage)[1]){
-for (progeny.index in c(26,33,56,195,212)){
+for (progeny.index in c(26,33,56,195,212,36,86,265)){
 
   progeny.individual.name<- parentage[progeny.index,1]
   #progeny.individual.name
