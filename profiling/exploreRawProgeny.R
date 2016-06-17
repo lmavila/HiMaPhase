@@ -19,6 +19,11 @@ progeny[1:10,"A2643"]
 
 
 #write.table(data.frame(progeny[,1],progeny[,"A0118"]),sep="\t",file="A0118_raw.txt")
+write.table(data.frame(progeny[,1],progeny[,"A0387"]),sep="\t",file="A0387_raw.txt")
+write.table(data.frame(progeny[,1],progeny[,"A0051"]),sep="\t",file="A0051_raw.txt")
+
+
+
 date()
 genotype.names<-colnames(progeny)
 genotype.names<-genotype.names[2:length(genotype.names)]
