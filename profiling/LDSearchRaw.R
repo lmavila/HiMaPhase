@@ -75,7 +75,7 @@ write.table(progeny.subset,file="PC_I58_ID2_selfed_family_raw.txt",sep="\t")
 #output.filename<-"ld_from_raw.txt"
 output.filename<-"ld_from_raw.txt"
  
-cat(file=output.filename,"locus\tp.val\n");
+cat(file=output.filename,"locus\tmax(cor)\tmean(cor)\n");
 for(window.start in 1:(dim(progeny.subset)[1])){
 #for(window.start in 1:5){
  
@@ -103,7 +103,7 @@ for(window.start in 1:(dim(progeny.subset)[1])){
 ##code for correlation
      #cat(file=output.filename,temp.r.values,"\n",sep=",",append=TRUE)
      if(length(temp.r.values)!=0){
-       cat(file=output.filename,as.character(loci.names[window.start]),max(temp.r.values),"\n",sep="\t",append=TRUE)
+       cat(file=output.filename,as.character(loci.names[window.start]),max(temp.r.values),mean(temp.r.values),"\n",sep="\t",append=TRUE)
      }
 }
    
