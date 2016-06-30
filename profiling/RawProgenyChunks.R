@@ -18,21 +18,26 @@ progeny<-read.table('/group/jrigrp4/phasing/cj_teo_updated/teo_raw_biallelic_rec
 date()
 dim(progeny)
 
+## working for one family
+progeny.list<-parentage[parentage$Mother=="PC_I58_ID2"&parentage$Father=="PC_I58_ID2",]
+
+
+
 # End of loading files, now  starting loop for each progeny individual
 #initializing summary file
-cat("num_taxa\ttaxa\tmom\tdad\tnum_rec_events\n",file="raw-hmm-summary.txt")
+cat("taxa\tmom\tdad\tnum_rec_events\n",file="chunks-raw-hmm-summary.txt")
 #initializing CO events file
-cat("num_taxa\ttaxa\tmom\tdad\tlocus\tchromosome\tphysical_position\n",file="raw-hmm-summary-co.txt")
+cat("taxa\tmom\tdad\tlocus\tchromosome\tphysical_position\tmom_chunk\n",file="chunks-raw-hmm-summary-co.txt")
 
 ### START OF MAIN LOOP
 #for (progeny.index in 1:dim(parentage)[1]){
-for (progeny.index in 50:60){
+for (progeny.label in progeny.list$Taxa){
 
-  progeny.individual.name<- parentage[progeny.index,1]
+  progeny.individual.name<- progeny.label
   #progeny.individual.name
-  maternal.parent.name<-parentage[progeny.index,2]
+  maternal.parent.name<-as.character(parentage[parentage$Taxa==progeny.label,2])
   #maternal.parent.name
-  paternal.parent.name<-parentage[progeny.index,3]
+  paternal.parent.name<-as.character(parentage[parentage$Taxa==progeny.label,3])
   #paternal.parent.name
   total.recomb.events<-0                           
   chromosomes<-as.character(levels(as.factor(parents$chr)))
@@ -90,10 +95,10 @@ for (progeny.index in 50:60){
     ## Some reports per chromosome
     if(chromosome=="1") { #print header only at the start of chr1
       cat('\n################################################################\n')
-      cat("taxa #",progeny.index,". Working with (taxa mom dad): ",sep="")
-      cat(paste(as.character(parentage[progeny.index,1]) ,
-         as.character(parentage[progeny.index,2]),
-         as.character(parentage[progeny.index,3])  ),"\n")
+      cat("Working with (taxa mom dad): ",sep="")
+      cat(paste(progeny.individual.name,
+         maternal.parent.name,
+         paternal.parent.name  ),"\n")
     }
 
     cat("Chromosome",chromosome,"events: ",CountRecombEvents(estimated),"\n")
@@ -114,14 +119,15 @@ for (progeny.index in 50:60){
         max.index<-min(length(obs),locus.index+2)
         #cat("locus.index,min.index,max.index: ",locus.index,min.index,max.index,"\n",sep=",")
         #cat("num_taxa\ttaxa\tmom\tdad\tnum_rec_events\n",file="hmm-summary.txt")
-        cat(progeny.index,
-            as.character(parentage[progeny.index,1]),
-            as.character(parentage[progeny.index,2]),
-            as.character(parentage[progeny.index,3]),
+        cat(
+            progeny.individual.name,
+            maternal.parent.name,
+            paternal.parent.name,
             as.character(current.chromosome.parent.subset[locus.index,1]),
             as.character(current.chromosome.parent.subset[locus.index,2]),
             as.character(current.chromosome.parent.subset[locus.index,3]),
-            sep="\t","\n",file="raw-hmm-summary-co.txt",append=TRUE)
+            as.character(current.chromosome.parent.subset[locus.index,paste(maternal.parent.name,"_chunk",sep="")]),
+            sep="\t","\n",file="chunks-raw-hmm-summary-co.txt",append=TRUE)
  
 
         cat("Recomb event at locus:",as.character(current.chromosome.parent.subset[locus.index,1]),
@@ -139,11 +145,11 @@ for (progeny.index in 50:60){
     }  #end of num.recomb.events>1
          
   } ## END OF CHROMOSOME LOOP
-      cat(progeny.index,as.character(parentage[progeny.index,1]) ,
-        as.character(parentage[progeny.index,2]),
-        as.character(parentage[progeny.index,3]),
+      cat(progeny.individual.name,
+          maternal.parent.name,
+          paternal.parent.name,
         total.recomb.events,
-        "\n",file="raw-hmm-summary.txt",append=TRUE,sep="\t")
+        "\n",file="chunks-raw-hmm-summary.txt",append=TRUE,sep="\t")
   
   ### For each recombination event we will show flanking loci:
   ### for the parent haps and progeny
